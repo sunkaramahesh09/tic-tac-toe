@@ -1,23 +1,17 @@
-/* ===== RESET ===== */
-* {
-  box-sizing: border-box;
-}
-
 /* ===== CONTAINER ===== */
 .container {
   min-height: 100vh;
-  background: pink;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 /* ===== TITLE ===== */
 .title {
   color: white;
-  font-size: clamp(26px, 4vw, 48px);
-  margin-bottom: 25px;
+  font-size: clamp(26px, 4vw, 46px);
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -25,16 +19,14 @@
   color: aqua;
 }
 
-.title img {
-  height: 40px;
-  margin: 0 10px;
-}
-
-/* ===== BOARD ===== */
+/* ===== BOARD (GRID FEEL) ===== */
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 18px; /* 🔥 real separation */
+  padding: 18px;
+  background: #e8a9d6; /* grid track color */
+  border-radius: 26px;
   width: min(90vw, 420px);
   margin-bottom: 30px;
 }
@@ -44,44 +36,54 @@
   aspect-ratio: 1 / 1;
   background: #1f3540;
   border-radius: 18px;
-  cursor: pointer;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  box-shadow:
-    inset 0 0 0 3px #0f1b21,
-    0 10px 20px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  user-select: none;
 
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  /* clear definition */
+  border: 3px solid #0f1b21;
+
+  /* depth without bleeding */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+
+  margin-bottom: 5px;
 }
 
+/* ===== INTERACTION (THIS IS KEY) ===== */
 .boxes:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    inset 0 0 0 3px #0f1b21,
-    0 14px 25px rgba(0, 0, 0, 0.45);
+  transform: scale(1.05);
+}
+
+.boxes:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== ICONS ===== */
 .boxes img {
   width: 65%;
   height: 65%;
+  pointer-events: none;
 }
 
 /* ===== RESET BUTTON ===== */
 .reset {
-  padding: 14px 40px;
+  padding: 14px 44px;
   font-size: clamp(18px, 3vw, 24px);
   border-radius: 50px;
   border: none;
-  cursor: pointer;
   background: #d45d5d;
+  cursor: pointer;
   color: black;
 
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.15s ease;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  transition: transform 0.12s ease;
 }
 
 .reset:hover {
